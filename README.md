@@ -24,13 +24,9 @@ The Virtual Shopping Assistant is an AI-powered tool that helps users browse and
 
 2.	Install dependencies:
 
-  	pip install -r requirements.txt
-  	
-    **Dependencies:**
+      Python 3.7+
 
-      	Python 3.7+
-    
-      	random (for simulating shipping costs and delivery times)
+      random (for simulating shipping costs and delivery times)
 
 
 **Directory Structure**
@@ -41,7 +37,7 @@ The Virtual Shopping Assistant is an AI-powered tool that helps users browse and
     
     ├── tools.py                # Mock functions for different tools
     
-    ├── requirements.txt        # List of required Python libraries
+    ├── non-coding-component.txt        # List of required Python libraries
     
     └── README.md               # Project documentation
 
@@ -50,7 +46,7 @@ The Virtual Shopping Assistant is an AI-powered tool that helps users browse and
 
     To run the virtual shopping assistant, execute the agent.py script. This script will initialize the agent and demonstrate its functionality with sample queries.
     
-    _python agent.py_
+    python agent.py
 
 
 **Agent Functionality**
@@ -81,79 +77,79 @@ The check_return_policy method provides a mock return policy for a given e-comme
 
 The virtual shopping assistant consists of several components that work together to provide the final answer:
 
-    **1. Reasoning:** Based on the user's query, the agent determines which tools need to be invoked. For example, if the user asks about shipping costs, the agent invokes the estimate_shipping tool.
+    1. Reasoning: Based on the user's query, the agent determines which tools need to be invoked. For example, if the user asks about shipping costs, the agent invokes the estimate_shipping tool.
     
-    **2. Tool Calls:** Once the reasoning is complete, the relevant tools are called with the appropriate parameters. Each tool performs a specific task, like searching products or calculating shipping costs.
+    2. Tool Calls: Once the reasoning is complete, the relevant tools are called with the appropriate parameters. Each tool performs a specific task, like searching products or calculating shipping costs.
     
-    **3. Observation / Integration:** The agent integrates the outputs of the tools to generate a coherent response for the user. The tools return data that the agent uses to form the final answer, including product details, price comparisons, or shipping information.
+    3. Observation / Integration: The agent integrates the outputs of the tools to generate a coherent response for the user. The tools return data that the agent uses to form the final answer, including product details, price comparisons, or shipping information.
 
 
 **Prompt Structure**
 
-    **1. System Prompt:** Defines the role and available tools for the agent (searching products, estimating shipping, applying promo codes, comparing prices, checking return policies).
+    1. System Prompt: Defines the role and available tools for the agent (searching products, estimating shipping, applying promo codes, comparing prices, checking return policies).
     
-    **2. User Queries:** Example queries are provided to guide the agent in performing the right tasks based on the user's needs.
+    2. User Queries: Example queries are provided to guide the agent in performing the right tasks based on the user's needs.
     
-    **3. Agent Output:** The agent should clearly explain what tools it used to arrive at the response, e.g., "I found the following products matching your criteria..." and "I applied the discount code 'SAVE10' to your order."
+    3. Agent Output: The agent should clearly explain what tools it used to arrive at the response, e.g., "I found the following products matching your criteria..." and "I applied the discount code 'SAVE10' to your order."
 
 
 **Demonstration Tasks**
 
-    **1. Task A: Basic Item Search + Price Constraint**
-      **Query:** "Find a floral skirt under $40 in size S. Is it in stock, and can I apply a discount code ‘SAVE10’?"
-      **Agent Steps:** Invoke the product search and apply the promo code.
+    1. Task A: Basic Item Search + Price Constraint
+      Query: "Find a floral skirt under $40 in size S. Is it in stock, and can I apply a discount code ‘SAVE10’?"
+      Agent Steps: Invoke the product search and apply the promo code.
       
-    **2. Task B: Shipping Deadline**
-      **Query:** "I need white sneakers (size 8) for under $70 that can arrive by Friday."
-      **Agent Steps:** Use the search and shipping estimator tools.
+    2. Task B: Shipping Deadline
+      Query: "I need white sneakers (size 8) for under $70 that can arrive by Friday."
+      Agent Steps: Use the search and shipping estimator tools.
       
-    **3. Task C: Competitor Price Comparison**
-      **Query:** "I found a ‘casual denim jacket’ at $80 on SiteA. Any better deals?"
-      **Agent Steps:** Compare prices across platforms.
+    3. Task C: Competitor Price Comparison
+      Query: "I found a ‘casual denim jacket’ at $80 on SiteA. Any better deals?"
+      Agent Steps: Compare prices across platforms.
       
-    **4. Task D: Returns & Policies**
-      **Query:** "I want to buy a cocktail dress from SiteB, but only if returns are hassle-free. Do they accept returns?"
-      **Agent Steps:** Check return policy for the specified site.
+    4. Task D: Returns & Policies
+      Query: "I want to buy a cocktail dress from SiteB, but only if returns are hassle-free. Do they accept returns?"
+      Agent Steps: Check return policy for the specified site.
       
-    **5. Task E: Complex Interaction**
-      **Query:** "Find a red T-shirt under $30, that can be delivered by tomorrow, and can I use ‘DISCOUNT10’?"
-      **Agent Steps:** Invoke search, shipping, and promo code tools.
+    5. Task E: Complex Interaction
+      Query: "Find a red T-shirt under $30, that can be delivered by tomorrow, and can I use ‘DISCOUNT10’?"
+      Agent Steps: Invoke search, shipping, and promo code tools.
 
 
 **Challenges and Improvements**
 
 **Challenges**
 
-    **1. Handling Multiple Tools:** Combining outputs from different tools (e.g., search, shipping, and discount tools) into one coherent response required careful management of data.
+    1. Handling Multiple Tools: Combining outputs from different tools (e.g., search, shipping, and discount tools) into one coherent response required careful management of data.
     
-    **2. Ambiguity in User Queries:** Handling queries that don’t explicitly specify details, like size or color, required building logic for default values or asking follow-up questions.
+    2. Ambiguity in User Queries: Handling queries that don’t explicitly specify details, like size or color, required building logic for default values or asking follow-up questions.
 
 **Improvements**
 
-    **1. Real-Time Integration:** Integrating with real e-commerce APIs for live product data instead of using mock data.
+    1. Real-Time Integration: Integrating with real e-commerce APIs for live product data instead of using mock data.
     
-    **2. Better Error Handling:** Incorporating more robust error handling to deal with edge cases, like invalid promo codes or out-of-stock products.
+    2. Better Error Handling: Incorporating more robust error handling to deal with edge cases, like invalid promo codes or out-of-stock products.
 
 
 **Comparative Conceptual Map**
 
-    **Approach 1:** The agent uses a simple, rule-based approach to decide which tools to invoke based on the user’s query.
+    Approach 1: The agent uses a simple, rule-based approach to decide which tools to invoke based on the user’s query.
     
-    **Approach 2:** The agent integrates NLP techniques to better understand and disambiguate user queries, possibly using a more complex decision-making framework (e.g., Reinforcement Learning).
+    Approach 2: The agent integrates NLP techniques to better understand and disambiguate user queries, possibly using a more complex decision-making framework (e.g., Reinforcement Learning).
 
 
 **Design Decisions**
 
-    **Modular Design:** Each tool (search, shipping, promo codes, etc.) is implemented in its own function, making the code easy to extend.
+    1. Modular Design: Each tool (search, shipping, promo codes, etc.) is implemented in its own function, making the code easy to extend.
     
-    **Mock Data:** Using mock data for the demonstration instead of integrating real-time e-commerce data, to simplify the development and testing process.
+    2. Mock Data: Using mock data for the demonstration instead of integrating real-time e-commerce data, to simplify the development and testing process.
 
 
 **Future Work**
 
-    **1. NLP Integration:** Incorporating natural language processing for more intelligent query handling and better understanding of user intent.
+    1. NLP Integration: Incorporating natural language processing for more intelligent query handling and better understanding of user intent.
     
-    **2. Real Data Integration:** Connecting the system to actual e-commerce APIs like Amazon, eBay, or Flipkart for live product and price data.
+    2. Real Data Integration: Connecting the system to actual e-commerce APIs like Amazon, eBay, or Flipkart for live product and price data.
 
 
 **References**
